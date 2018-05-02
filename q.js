@@ -2068,6 +2068,10 @@ Q.noConflict = function() {
     throw new Error("Q.noConflict only works when Q is used as a global");
 };
 
+Q.series = function() {
+    return Array.prototype.slice.call(arguments).shift().reduce(Q.when, Q.resolve());
+};
+
 // All code before this point will be filtered from stack traces.
 var qEndingLine = captureLine();
 
